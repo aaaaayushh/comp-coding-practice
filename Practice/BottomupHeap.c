@@ -26,9 +26,6 @@ void heapify(int arr[], int n)
             }
         }
         arr[k] = v;
-        // for (int h = 1; h <= n; h++)
-        //     printf("%d   ", arr[h]);
-        // printf("\n");
     }
     return;
 }
