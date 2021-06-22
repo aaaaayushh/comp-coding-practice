@@ -55,7 +55,7 @@ void primMST(int graph[V][V])
         // Pick the minimum key vertex from the
         // set of vertices not yet included in MST
         int u = minKey(key, mstSet);
-
+        cout << "Min key vertex:" << u << "\n";
         // Add the picked vertex to the MST Set
         mstSet[u] = true;
 
@@ -69,24 +69,23 @@ void primMST(int graph[V][V])
             // mstSet[v] is false for vertices not yet included in MST
             // Update the key only if graph[u][v] is smaller than key[v]
             if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
+            {
                 parent[v] = u, key[v] = graph[u][v];
+                cout << "v=" << v << "\t"
+                     << "key[v] = " << key[v] << '\t' << "parent[v] = " << parent[v] << '\n';
+            }
     }
 
     // print the constructed MST
     printMST(parent, graph);
+    for (int i = 0; i < V; i++)
+        cout << key[i] << '\t';
+    cout << '\n';
 }
 
 // Driver code
 int main()
 {
-    /* Let us create the following graph 
-        2 3 
-    (0)--(1)--(2) 
-    | / \ | 
-    6| 8/ \5 |7 
-    | / \ | 
-    (3)-------(4) 
-            9     */
     int graph[V][V] = {{0, 2, 0, 6, 0},
                        {2, 0, 3, 8, 5},
                        {0, 3, 0, 0, 7},
